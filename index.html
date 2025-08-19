@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rayane ALLAOUI - Portfolio Monde</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="profile-section">
+                <div class="profile-image">
+                    <img src="https://via.placeholder.com/60x60/4F46E5/FFFFFF?text=RA" alt="Rayane ALLAOUI" class="profile-pic">
+                </div>
+                <div class="profile-info">
+                    <h1 class="name">Rayane ALLAOUI</h1>
+                    <p class="title">Développeur Web & Web Mobile</p>
+                </div>
+            </div>
+            <nav class="nav-links">
+                <a href="#about" class="nav-link">À propos</a>
+                <a href="#skills" class="nav-link">Compétences</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h2 class="hero-title">Découvrez mon parcours à travers le monde</h2>
+                <p class="hero-subtitle">Chaque lieu raconte une partie de mon histoire de développeur</p>
+                <button class="cta-button" onclick="scrollToMap()">Explorer la carte</button>
+            </div>
+        </section>
+
+        <!-- World Map Section -->
+        <section id="world-map" class="world-map-section">
+            <div class="map-container">
+                <div id="map" class="map"></div>
+                <div class="map-overlay">
+                    <h3 class="map-title">Mon Parcours Mondial</h3>
+                    <p class="map-description">Cliquez sur les marqueurs pour découvrir mon expérience</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <h2 class="section-title">À propos de moi</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>Développeur Web & Web Mobile en formation, passionné par la création d'applications performantes et intuitives. Formé aux technologies front-end et back-end, j'ai déjà réalisé plusieurs projets concrets intégrant bases de données, API et interfaces responsives.</p>
+                        <p>Rigoureux, curieux et motivé, je souhaite rejoindre une entreprise en alternance afin de mettre mes compétences en pratique, continuer à progresser et contribuer à des projets web innovants.</p>
+                    </div>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <span class="stat-number">22</span>
+                            <span class="stat-label">ans</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">3+</span>
+                            <span class="stat-label">projets</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">5</span>
+                            <span class="stat-label">certifications</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills-section">
+            <div class="container">
+                <h2 class="section-title">Mes Compétences</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3 class="category-title">Frontend</h3>
+                        <div class="skill-items">
+                            <span class="skill-item">HTML</span>
+                            <span class="skill-item">CSS</span>
+                            <span class="skill-item">JavaScript</span>
+                            <span class="skill-item">React</span>
+                            <span class="skill-item">Vue.js</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3 class="category-title">Backend</h3>
+                        <div class="skill-items">
+                            <span class="skill-item">PHP</span>
+                            <span class="skill-item">Java</span>
+                            <span class="skill-item">Python</span>
+                            <span class="skill-item">Node.js</span>
+                            <span class="skill-item">C</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3 class="category-title">Bases de données</h3>
+                        <div class="skill-items">
+                            <span class="skill-item">SQL</span>
+                            <span class="skill-item">NoSQL</span>
+                            <span class="skill-item">MongoDB</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3 class="category-title">Outils</h3>
+                        <div class="skill-items">
+                            <span class="skill-item">Git</span>
+                            <span class="skill-item">Docker</span>
+                            <span class="skill-item">Linux</span>
+                            <span class="skill-item">Bash</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2 class="section-title">Contact</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <span class="contact-icon">📧</span>
+                            <span class="contact-text">rayane.allaoui03@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📱</span>
+                            <span class="contact-text">+33 6 50 27 26 87</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📍</span>
+                            <span class="contact-text">Annecy, France</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://linkedin.com/in/rayaneallaoui" target="_blank" class="social-link">
+                            <span class="social-icon">💼</span>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://github.com/RayaneAll" target="_blank" class="social-link">
+                            <span class="social-icon">💻</span>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="images/CV_Rayane_Allaoui.pdf" target="_blank" class="social-link">
+                            <span class="social-icon">📄</span>
+                            <span>Télécharger mon CV (PDF)</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Rayane ALLAOUI. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- Project Modal -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-body">
+                <div id="modalContent"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
