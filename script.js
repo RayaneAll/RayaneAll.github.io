@@ -10,7 +10,7 @@ class WorldMapPortfolio {
                 location: [48.9431, 2.1622], // Sartrouville, France (ND-IT)
                 description: 'Développement d\'un ERP basique en Java avec Spring Boot',
                 technologies: ['Java', 'Spring Boot', 'SQL', 'Maven'],
-                image: 'https://via.placeholder.com/600x300/4F46E5/FFFFFF?text=ERP+System',
+                image: 'images/ERP en JS.png',
                 details: {
                     company: 'ND-IT',
                     duration: 'Avril 2023 - Mai 2023',
@@ -30,7 +30,7 @@ class WorldMapPortfolio {
                 location: [37.7749, -122.4194], // San Francisco, USA
                 description: 'Reproduction complète du site Airbnb avec Python',
                 technologies: ['Python', 'Flask', 'SQLAlchemy', 'HTML/CSS', 'JavaScript'],
-                image: 'https://via.placeholder.com/600x300/10B981/FFFFFF?text=Airbnb+Clone',
+                image: 'images/Airbnb-like en Python.png',
                 details: {
                     company: 'Projet Personnel',
                     duration: '2023',
@@ -50,7 +50,7 @@ class WorldMapPortfolio {
                 location: [60.1282, 18.6435], // Stockholm, Suède
                 description: 'Création d\'un shell basique en langage C',
                 technologies: ['C', 'Linux', 'Bash', 'Process Management'],
-                image: 'https://via.placeholder.com/600x300/EF4444/FFFFFF?text=Simple+Shell',
+                image: 'images/Simple Shell en C.png',
                 details: {
                     company: 'Holberton School',
                     duration: '2023',
@@ -70,7 +70,7 @@ class WorldMapPortfolio {
                 location: [45.783329, 4.73333], // Charbonnières-les-Bains, France (IT-Akademy) - Coordonnées exactes
                 description: 'Formation en Développement Web / Web Mobile',
                 technologies: ['HTML/CSS', 'JavaScript', 'PHP', 'React', 'Vue.js'],
-                image: 'https://via.placeholder.com/600x300/8B5CF6/FFFFFF?text=IT-Akademy',
+                image: 'images/IT-Akademy.png',
                 details: {
                     company: 'IT-Akademy',
                     duration: 'Octobre 2021 - Juin 2023',
@@ -90,7 +90,7 @@ class WorldMapPortfolio {
                 location: [46.3705, 6.4794], // Thonon-les-Bains, France (Holberton School)
                 description: 'Formation en Informatique - Développement Web Full-Stack',
                 technologies: ['C', 'Python', 'JavaScript', 'SQL', 'Linux'],
-                image: 'https://via.placeholder.com/600x300/06B6D4/FFFFFF?text=Holberton+School',
+                image: 'images/Holberton.png',
                 details: {
                     company: 'Holberton School',
                     duration: 'Depuis Octobre 2024',
@@ -110,7 +110,7 @@ class WorldMapPortfolio {
                 location: [40.7128, -74.0060], // New York, USA
                 description: 'Certifications professionnelles en technologies IBM',
                 technologies: ['Agile', 'Cloud Computing', 'Cybersecurity', 'SQL', 'Open Source'],
-                image: 'https://via.placeholder.com/600x300/3B82F6/FFFFFF?text=IBM+Certifications',
+                image: 'images/IBM.png',
                 details: {
                     company: 'IBM SkillsBuild',
                     duration: '2023-2024',
