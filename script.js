@@ -328,6 +328,223 @@ class WorldMapPortfolio {
                 modal.style.display = 'none';
             }
         });
+
+        // Setup du formulaire de contact
+        this.setupContactForm();
+    }
+
+    setupContactForm() {
+        const form = document.getElementById('contactForm');
+        if (!form) return;
+
+        // Initialiser EmailJS
+        emailjs.init('T6ZQGh3k4FWEbwZt7'); // Remplace par ton vrai User ID
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.handleFormSubmit();
+        });
+
+        // Validation en temps réel
+        this.setupFormValidation();
+    }
+
+    setupFormValidation() {
+        const inputs = document.querySelectorAll('.form-input, .form-textarea');
+        
+        inputs.forEach(input => {
+            input.addEventListener('blur', () => {
+                this.validateField(input);
+            });
+            
+            input.addEventListener('input', () => {
+                this.clearFieldError(input);
+            });
+        });
+    }
+
+    validateField(field) {
+        const value = field.value.trim();
+        const fieldName = field.name;
+        let isValid = true;
+        let errorMessage = '';
+
+        switch (fieldName) {
+            case 'name':
+                if (value.length < 2) {
+                    isValid = false;
+                    errorMessage = 'Le nom doit contenir au moins 2 caractères';
+                }
+                break;
+            case 'email':
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(value)) {
+                    isValid = false;
+                    errorMessage = 'Veuillez entrer un email valide';
+                }
+                break;
+            case 'subject':
+                if (value.length < 5) {
+                    isValid = false;
+                    errorMessage = 'Le sujet doit contenir au moins 5 caractères';
+                }
+                break;
+            case 'message':
+                if (value.length < 10) {
+                    isValid = false;
+                    errorMessage = 'Le message doit contenir au moins 10 caractères';
+                }
+                break;
+        }
+
+        if (!isValid) {
+            this.showFieldError(field, errorMessage);
+        } else {
+            this.showFieldSuccess(field);
+        }
+
+        return isValid;
+    }
+
+    showFieldError(field, message) {
+        field.classList.remove('success');
+        field.classList.add('error');
+        const errorElement = document.getElementById(field.name + 'Error');
+        if (errorElement) {
+            errorElement.textContent = message;
+        }
+    }
+
+    showFieldSuccess(field) {
+        field.classList.remove('error');
+        field.classList.add('success');
+        const errorElement = document.getElementById(field.name + 'Error');
+        if (errorElement) {
+            errorElement.textContent = '';
+        }
+    }
+
+    clearFieldError(field) {
+        field.classList.remove('error', 'success');
+        const errorElement = document.getElementById(field.name + 'Error');
+        if (errorElement) {
+            errorElement.textContent = '';
+        }
+    }
+
+    async handleFormSubmit() {
+        const form = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = submitBtn.querySelector('.btn-text');
+        const btnLoading = submitBtn.querySelector('.btn-loading');
+
+        // Validation de tous les champs
+        const inputs = form.querySelectorAll('.form-input, .form-textarea');
+        let isValid = true;
+        
+        inputs.forEach(input => {
+            if (!this.validateField(input)) {
+                isValid = false;
+            }
+        });
+
+        if (!isValid) {
+            return;
+        }
+
+        // Afficher l'état de chargement
+        submitBtn.disabled = true;
+        btnText.style.display = 'none';
+        btnLoading.style.display = 'flex';
+
+        try {
+            // Préparer les données du formulaire
+            const formData = {
+                name: form.name.value,
+                email: form.email.value,
+                subject: form.subject.value,
+                message: form.message.value
+            };
+
+            // Envoyer l'email via EmailJS
+            const response = await emailjs.send(
+                'service_l999ulg', // Remplace par ton vrai Service ID
+                'template_uond4ic', // Remplace par ton vrai Template ID
+                {
+                    from_name: formData.name,
+                    from_email: formData.email,
+                    subject: formData.subject,
+                    message: formData.message,
+                    to_name: 'Rayane ALLAOUI'
+                }
+            );
+
+            // Succès
+            this.showFormSuccess();
+            form.reset();
+            inputs.forEach(input => {
+                input.classList.remove('success');
+            });
+
+        } catch (error) {
+            // Erreur
+            this.showFormError(error);
+        } finally {
+            // Restaurer le bouton
+            submitBtn.disabled = false;
+            btnText.style.display = 'inline';
+            btnLoading.style.display = 'none';
+        }
+    }
+
+    showFormSuccess() {
+        // Créer une notification de succès
+        const notification = document.createElement('div');
+        notification.className = 'form-notification success';
+        notification.innerHTML = `
+            <div class="notification-content">
+                <span class="notification-icon">✅</span>
+                <span class="notification-text">Message envoyé avec succès ! Je vous répondrai dans les plus brefs délais.</span>
+            </div>
+        `;
+        
+        this.showNotification(notification);
+    }
+
+    showFormError(error) {
+        // Créer une notification d'erreur
+        const notification = document.createElement('div');
+        notification.className = 'form-notification error';
+        notification.innerHTML = `
+            <div class="notification-content">
+                <span class="notification-icon">❌</span>
+                <span class="notification-text">Erreur lors de l'envoi. Veuillez réessayer ou me contacter directement.</span>
+            </div>
+        `;
+        
+        this.showNotification(notification);
+    }
+
+    showNotification(notification) {
+        const formContainer = document.querySelector('.form-container');
+        formContainer.appendChild(notification);
+
+        // Afficher la notification
+        setTimeout(() => {
+            notification.style.opacity = '1';
+            notification.style.transform = 'translateY(0)';
+        }, 100);
+
+        // Supprimer la notification après 5 secondes
+        setTimeout(() => {
+            notification.style.opacity = '0';
+            notification.style.transform = 'translateY(-20px)';
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 300);
+        }, 5000);
     }
 
     setupSmoothScrolling() {
