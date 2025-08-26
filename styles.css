@@ -219,6 +219,21 @@ body {
     color: var(--text-muted);
 }
 
+[data-theme="dark"] .geolocate-btn {
+    background: var(--accent-color);
+    color: white;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
+}
+
+[data-theme="dark"] .geolocate-btn:hover {
+    background: var(--accent-secondary);
+    box-shadow: 0 6px 20px rgba(79, 70, 229, 0.5);
+}
+
+[data-theme="dark"] .geolocate-btn.loading {
+    background: var(--text-muted);
+}
+
 /* Dark mode pour les modales des projets */
 [data-theme="dark"] .modal-content {
     background: var(--card-bg);
@@ -581,6 +596,123 @@ body {
     color: #6b7280;
     font-size: 0.9rem;
     line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+/* Bouton de géolocalisation */
+.geolocate-btn {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 1rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+.geolocate-btn:hover {
+    background: var(--accent-secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
+}
+
+.geolocate-btn:active {
+    transform: translateY(0);
+}
+
+.geolocate-btn.loading {
+    background: var(--text-muted);
+    cursor: not-allowed;
+}
+
+.geolocate-btn.loading .geolocate-icon {
+    animation: spin 1s linear infinite;
+}
+
+.geolocate-icon {
+    font-size: 1rem;
+}
+
+.geolocate-text {
+    font-size: 0.9rem;
+}
+
+/* Notifications d'erreur de géolocalisation */
+.geolocation-error {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #ef4444;
+    color: white;
+    border-radius: 10px;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 10px 25px rgba(239, 68, 68, 0.3);
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.3s ease;
+    max-width: 350px;
+    border: 1px solid #dc2626;
+}
+
+.error-content {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.error-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.error-text {
+    flex: 1;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.error-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.error-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Popup de position utilisateur */
+.user-location-popup .leaflet-popup-content-wrapper {
+    background: #10b981;
+    color: white;
+    border-radius: 10px;
+}
+
+.user-location-popup .leaflet-popup-content {
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.user-location-popup .leaflet-popup-tip {
+    background: #10b981;
 }
 
 /* Custom Map Markers */
