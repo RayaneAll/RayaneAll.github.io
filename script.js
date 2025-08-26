@@ -286,14 +286,14 @@ class WorldMapPortfolio {
                         </div>
                     </div>
                     
-                    <h3 style="margin: 1.5rem 0 1rem 0; color: #1f2937;">Réalisations:</h3>
-                    <ul style="margin-bottom: 1.5rem; padding-left: 1.5rem; color: #6b7280;">
+                    <h3 class="project-section-title">Réalisations:</h3>
+                    <ul class="project-achievements-list">
                         ${project.details.achievements.map(achievement => 
-                            `<li style="margin-bottom: 0.5rem;">${achievement}</li>`
+                            `<li>${achievement}</li>`
                         ).join('')}
                     </ul>
                     
-                    <h3 style="margin: 1.5rem 0 1rem 0; color: #1f2937;">Technologies utilisées:</h3>
+                    <h3 class="project-section-title">Technologies utilisées:</h3>
                     <div class="project-tech">
                         ${project.technologies.map(tech => 
                             `<span class="tech-tag">${tech}</span>`
@@ -331,6 +331,61 @@ class WorldMapPortfolio {
 
         // Setup du formulaire de contact
         this.setupContactForm();
+        
+        // Setup du toggle de thème
+        this.setupThemeToggle();
+    }
+
+    setupThemeToggle() {
+        const themeToggle = document.getElementById('themeToggle');
+        if (!themeToggle) return;
+
+        // Charger le thème sauvegardé ou détecter la préférence système
+        this.loadTheme();
+
+        themeToggle.addEventListener('click', () => {
+            this.toggleTheme();
+        });
+    }
+
+    loadTheme() {
+        // Vérifier le localStorage
+        const savedTheme = localStorage.getItem('theme');
+        
+        if (savedTheme) {
+            this.setTheme(savedTheme);
+        } else {
+            // Détecter la préférence système
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            this.setTheme(prefersDark ? 'dark' : 'light');
+        }
+    }
+
+    toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        this.setTheme(newTheme);
+        localStorage.setItem('theme', newTheme);
+    }
+
+    setTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        
+        // Mettre à jour l'icône du toggle
+        const themeToggle = document.getElementById('themeToggle');
+        if (themeToggle) {
+            const lightIcon = themeToggle.querySelector('.theme-icon.light');
+            const darkIcon = themeToggle.querySelector('.theme-icon.dark');
+            
+            if (theme === 'dark') {
+                lightIcon.style.display = 'none';
+                darkIcon.style.display = 'inline';
+            } else {
+                lightIcon.style.display = 'inline';
+                darkIcon.style.display = 'none';
+            }
+        }
     }
 
     setupContactForm() {
