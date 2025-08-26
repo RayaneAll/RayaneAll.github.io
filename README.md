@@ -135,7 +135,7 @@ Le portfolio s'adapte automatiquement à :
 3. Ou utilisez un serveur local : `python -m http.server 8000`
 
 ### Production
-- **GitHub Pages** - Déploiement automatique
+- **GitHub Pages** - Déploiement automatique (https://RayaneAll.github.io)
 - **Netlify** - Déploiement avec drag & drop
 - **Vercel** - Déploiement optimisé
 
