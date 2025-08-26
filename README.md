@@ -11,10 +11,10 @@ Un portfolio unique et immersif présentant mon parcours de développeur à trav
 - **Vue satellite optionnelle** pour plus de réalisme
 
 ### 🎯 Projets Positionnés sur la Carte
-1. **Paris, France** - Système ERP en Java (ND-IT)
+1. **Sartrouville, France** - Système ERP en Java (ND-IT)
 2. **San Francisco, USA** - Clone Airbnb en Python
 3. **Stockholm, Suède** - Shell Simple en C (Holberton School)
-4. **Lyon, France** - Formation IT-Akademy
+4. **Charbonnières-les-Bains, France** - Formation IT-Akademy
 5. **Thonon-les-Bains, France** - Formation Holberton School
 6. **New York, USA** - Certifications IBM
 
@@ -25,24 +25,28 @@ Un portfolio unique et immersif présentant mon parcours de développeur à trav
 - **Micro-interactions** pour une expérience engageante
 
 ### 📱 Fonctionnalités Interactives
-- **Modales détaillées** pour chaque projet
+- **Modales détaillées** pour chaque projet avec texte parfaitement lisible
 - **Navigation fluide** entre les sections
 - **Animations au scroll** pour révéler le contenu
 - **Header intelligent** qui se cache au scroll
+- **Mode sombre/clair** avec toggle dans la navbar
+- **Formulaire de contact fonctionnel** avec envoi d'emails via EmailJS
 
 ## 🚀 Technologies Utilisées
 
 ### Frontend
 - **HTML5** - Structure sémantique
-- **CSS3** - Styles modernes avec animations
-- **JavaScript ES6+** - Logique interactive
-- **Leaflet.js** - Carte interactive
+- **CSS3** - Styles modernes avec animations et variables CSS
+- **JavaScript ES6+** - Logique interactive et gestion des thèmes
+- **Leaflet.js** - Carte interactive avec marqueurs personnalisés
 
 ### Design
 - **Inter Font** - Typographie moderne
 - **CSS Grid & Flexbox** - Layout responsive
 - **CSS Animations** - Transitions fluides
 - **Backdrop Filter** - Effets de flou
+- **Variables CSS** - Système de thèmes dynamiques
+- **Mode sombre/clair** - Interface adaptative
 
 ## 📁 Structure du Projet
 
@@ -69,21 +73,31 @@ portfolio/
 - **Vue satellite** disponible via le contrôle de couches
 
 ### Sections
-- **Hero** - Introduction immersive
-- **Carte du Monde** - Projets positionnés géographiquement
-- **À propos** - Présentation personnelle
-- **Compétences** - Technologies maîtrisées
-- **Contact** - Informations de contact
+- **Hero** - Introduction immersive avec texte centré
+- **Carte du Monde** - Projets positionnés géographiquement avec marqueurs interactifs
+- **À propos** - Présentation personnelle avec statistiques
+- **Compétences** - Technologies maîtrisées organisées par catégories
+- **Contact** - Informations de contact et liens sociaux
+- **Formulaire de Contact** - Formulaire fonctionnel avec validation et envoi d'emails
 
 ## 🎨 Personnalisation
 
-### Couleurs
-Les couleurs principales peuvent être modifiées dans `styles.css` :
+### Couleurs et Thèmes
+Les couleurs et thèmes peuvent être modifiés dans `styles.css` :
 ```css
 :root {
-    --primary-color: #4f46e5;
-    --secondary-color: #7c3aed;
-    --accent-color: #10b981;
+    --bg-primary: #f8fafc;
+    --bg-secondary: #e2e8f0;
+    --text-primary: #1f2937;
+    --accent-color: #4f46e5;
+    --accent-secondary: #7c3aed;
+}
+
+[data-theme="dark"] {
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --text-primary: #f8fafc;
+    /* ... autres variables sombres */
 }
 ```
 
@@ -125,27 +139,42 @@ Le portfolio s'adapte automatiquement à :
 - **Netlify** - Déploiement avec drag & drop
 - **Vercel** - Déploiement optimisé
 
+### Configuration EmailJS
+Pour activer le formulaire de contact :
+1. Créez un compte sur [EmailJS.com](https://www.emailjs.com/)
+2. Configurez un service email (Gmail, Outlook, etc.)
+3. Créez un template d'email
+4. Remplacez les IDs dans `script.js` :
+   - `YOUR_USER_ID` → Votre User ID
+   - `YOUR_SERVICE_ID` → Votre Service ID
+   - `YOUR_TEMPLATE_ID` → Votre Template ID
+
 ## 🔧 Développement
 
 ### Prérequis
 - Navigateur web moderne
 - Éditeur de code (VS Code recommandé)
 - Serveur local (optionnel)
+- Compte EmailJS pour le formulaire de contact
 
 ### Structure du Code
 - **Modulaire** - Classe `WorldMapPortfolio`
 - **Event-driven** - Gestion des interactions
-- **Responsive** - CSS mobile-first
+- **Responsive** - CSS mobile-first avec breakpoints optimisés
 - **Accessible** - Navigation clavier et sémantique
+- **Thèmes** - Système de variables CSS pour mode clair/sombre
+- **Validation** - Formulaire avec validation en temps réel
 
 ## 📈 Améliorations Futures
 
-- [ ] **Mode sombre** pour l'interface
-- [ ] **Animations 3D** pour les marqueurs
-- [ ] **Géolocalisation** de l'utilisateur
+- [x] **Mode sombre/clair** pour l'interface ✅
+- [x] **Formulaire de contact fonctionnel** avec EmailJS ✅
+- [x] **Marqueurs interactifs** avec animations ✅
+- [x] **Interface responsive** optimisée ✅
 - [ ] **Filtres** par technologie ou type de projet
 - [ ] **Timeline** interactive des projets
 - [ ] **Intégration** avec des APIs externes
+- [ ] **Mode hors ligne** avec PWA
 
 ## 🤝 Contribution
 
@@ -163,7 +192,8 @@ Ce projet est sous licence MIT. Libre d'utilisation et de modification.
 **Rayane ALLAOUI** - Développeur Web & Web Mobile
 - 📧 Email : rayane.allaoui03@gmail.com
 - 💼 LinkedIn : [linkedin.com/in/rayaneallaoui](https://linkedin.com/in/rayaneallaoui)
-- 💻 GitHub : [rayaneallaoui](https://github.com/rayaneallaoui)
+- 💻 GitHub : [RayaneAll](https://github.com/RayaneAll)
+- 📄 CV : Téléchargeable depuis le portfolio
 
 ---
 
