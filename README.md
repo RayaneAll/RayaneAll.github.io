@@ -194,7 +194,3 @@ Ce projet est sous licence MIT. Libre d'utilisation et de modification.
 - 💼 LinkedIn : [linkedin.com/in/rayaneallaoui](https://linkedin.com/in/rayaneallaoui)
 - 💻 GitHub : [RayaneAll](https://github.com/RayaneAll)
 - 📄 CV : Téléchargeable depuis le portfolio
-
----
-
-*Créé avec ❤️ et beaucoup de café ☕*
