@@ -1,4 +1,3 @@
-// Portfolio World Map Interactive Portfolio
 class WorldMapPortfolio {
     constructor() {
         this.map = null;
@@ -7,7 +6,7 @@ class WorldMapPortfolio {
             {
                 id: 'erp-project',
                 name: 'Système ERP en Java',
-                location: [48.9431, 2.1622], // Sartrouville, France (ND-IT)
+                location: [48.9431, 2.1622],
                 description: 'Développement d\'un ERP basique en Java avec Spring Boot',
                 technologies: ['Java', 'Spring Boot', 'SQL', 'Maven'],
                 image: 'images/ERP en JS.png',
@@ -27,7 +26,7 @@ class WorldMapPortfolio {
             {
                 id: 'airbnb-clone',
                 name: 'Clone Airbnb en Python',
-                location: [37.7749, -122.4194], // San Francisco, USA
+                location: [37.7749, -122.4194],
                 description: 'Reproduction complète du site Airbnb avec Python',
                 technologies: ['Python', 'Flask', 'SQLAlchemy', 'HTML/CSS', 'JavaScript'],
                 image: 'images/Airbnb-like en Python.png',
@@ -47,7 +46,7 @@ class WorldMapPortfolio {
             {
                 id: 'simple-shell',
                 name: 'Shell Simple en C',
-                location: [60.1282, 18.6435], // Stockholm, Suède
+                location: [60.1282, 18.6435],
                 description: 'Création d\'un shell basique en langage C',
                 technologies: ['C', 'Linux', 'Bash', 'Process Management'],
                 image: 'images/Simple Shell en C.png',
@@ -67,7 +66,7 @@ class WorldMapPortfolio {
             {
                 id: 'education-it-akademy',
                 name: 'Formation Développement Web',
-                location: [45.783329, 4.73333], // Charbonnières-les-Bains, France (IT-Akademy) - Coordonnées exactes
+                location: [45.783329, 4.73333],
                 description: 'Formation en Développement Web / Web Mobile',
                 technologies: ['HTML/CSS', 'JavaScript', 'PHP', 'React', 'Vue.js'],
                 image: 'images/IT-Akademy.png',
@@ -87,7 +86,7 @@ class WorldMapPortfolio {
             {
                 id: 'education-holberton',
                 name: 'Formation Holberton School',
-                location: [46.3705, 6.4794], // Thonon-les-Bains, France (Holberton School)
+                location: [46.3705, 6.4794],
                 description: 'Formation en Informatique - Développement Web Full-Stack',
                 technologies: ['C', 'Python', 'JavaScript', 'SQL', 'Linux'],
                 image: 'images/Holberton.png',
@@ -107,7 +106,7 @@ class WorldMapPortfolio {
             {
                 id: 'certifications',
                 name: 'Certifications IBM',
-                location: [40.7128, -74.0060], // New York, USA
+                location: [40.7128, -74.0060],
                 description: 'Certifications professionnelles en technologies IBM',
                 technologies: ['Agile', 'Cloud Computing', 'Cybersecurity', 'SQL', 'Open Source'],
                 image: 'images/IBM.png',
@@ -137,7 +136,6 @@ class WorldMapPortfolio {
     }
 
     initMap() {
-        // Initialiser la carte Leaflet
         this.map = L.map('map', {
             center: [30, 0],
             zoom: 2,
@@ -150,21 +148,18 @@ class WorldMapPortfolio {
             keyboard: true
         });
 
-        // Ajouter une couche de carte moderne
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© OpenStreetMap contributors',
             maxZoom: 18,
             minZoom: 2
         }).addTo(this.map);
 
-        // Ajouter une couche de carte satellite optionnelle
         const satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
             attribution: '© Esri',
             maxZoom: 18,
             minZoom: 2
         });
 
-        // Contrôles de couches
         const baseMaps = {
             "Carte": L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '© OpenStreetMap contributors',
@@ -176,12 +171,10 @@ class WorldMapPortfolio {
 
         L.control.layers(baseMaps).addTo(this.map);
 
-        // Personnaliser le style de la carte
         this.customizeMapStyle();
     }
 
     customizeMapStyle() {
-        // Ajouter des styles personnalisés pour la carte
         const mapElement = document.getElementById('map');
         if (mapElement) {
             mapElement.style.borderRadius = '20px';
@@ -190,7 +183,6 @@ class WorldMapPortfolio {
     }
 
     addMarkers() {
-        // Nettoyer complètement la carte et les marqueurs
         if (this.map) {
             this.map.eachLayer((layer) => {
                 if (layer instanceof L.Marker) {
@@ -199,12 +191,9 @@ class WorldMapPortfolio {
             });
         }
         
-        // Vider le tableau des marqueurs
         this.markers = [];
         
-        // Créer des marqueurs simples sans icônes personnalisées
         this.projects.forEach((project, index) => {
-            // Utiliser un marqueur Leaflet standard avec une couleur personnalisée
             const marker = L.circleMarker(project.location, {
                 radius: 10,
                 fillColor: '#4f46e5',
@@ -214,12 +203,10 @@ class WorldMapPortfolio {
                 fillOpacity: 1
             }).addTo(this.map);
 
-            // Ajouter un événement de clic pour ouvrir la modal
             marker.on('click', () => {
                 this.openProjectModal(project);
             });
 
-            // Ajouter une animation d'apparition progressive
             setTimeout(() => {
                 marker.setStyle({ radius: 0 });
                 setTimeout(() => {
@@ -305,7 +292,6 @@ class WorldMapPortfolio {
     }
 
     setupEventListeners() {
-        // Fermer la modal
         const closeBtn = document.querySelector('.close');
         const modal = document.getElementById('projectModal');
         
@@ -314,25 +300,21 @@ class WorldMapPortfolio {
                 modal.style.display = 'none';
             });
             
-            // Fermer en cliquant à l'extérieur
-            modal.addEventListener('click', (e) => {
+                    modal.addEventListener('click', (e) => {
                 if (e.target === modal) {
                     modal.style.display = 'none';
                 }
             });
         }
 
-        // Fermer avec la touche Escape
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && modal && modal.style.display === 'block') {
                 modal.style.display = 'none';
             }
         });
 
-        // Setup du formulaire de contact
         this.setupContactForm();
         
-        // Setup du toggle de thème
         this.setupThemeToggle();
     }
 
@@ -340,7 +322,6 @@ class WorldMapPortfolio {
         const themeToggle = document.getElementById('themeToggle');
         if (!themeToggle) return;
 
-        // Charger le thème sauvegardé ou détecter la préférence système
         this.loadTheme();
 
         themeToggle.addEventListener('click', () => {
@@ -349,7 +330,6 @@ class WorldMapPortfolio {
     }
 
     loadTheme() {
-        // Vérifier le localStorage
         const savedTheme = localStorage.getItem('theme');
         
         if (savedTheme) {
@@ -372,7 +352,6 @@ class WorldMapPortfolio {
     setTheme(theme) {
         document.documentElement.setAttribute('data-theme', theme);
         
-        // Mettre à jour l'icône du toggle
         const themeToggle = document.getElementById('themeToggle');
         if (themeToggle) {
             const lightIcon = themeToggle.querySelector('.theme-icon.light');
@@ -392,15 +371,13 @@ class WorldMapPortfolio {
         const form = document.getElementById('contactForm');
         if (!form) return;
 
-        // Initialiser EmailJS
-        emailjs.init('T6ZQGh3k4FWEbwZt7'); // Remplace par ton vrai User ID
+        emailjs.init('T6ZQGh3k4FWEbwZt7');
 
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             this.handleFormSubmit();
         });
 
-        // Validation en temps réel
         this.setupFormValidation();
     }
 
@@ -493,7 +470,6 @@ class WorldMapPortfolio {
         const btnText = submitBtn.querySelector('.btn-text');
         const btnLoading = submitBtn.querySelector('.btn-loading');
 
-        // Validation de tous les champs
         const inputs = form.querySelectorAll('.form-input, .form-textarea');
         let isValid = true;
         
@@ -507,13 +483,11 @@ class WorldMapPortfolio {
             return;
         }
 
-        // Afficher l'état de chargement
         submitBtn.disabled = true;
         btnText.style.display = 'none';
         btnLoading.style.display = 'flex';
 
         try {
-            // Préparer les données du formulaire
             const formData = {
                 name: form.name.value,
                 email: form.email.value,
@@ -521,10 +495,9 @@ class WorldMapPortfolio {
                 message: form.message.value
             };
 
-            // Envoyer l'email via EmailJS
             const response = await emailjs.send(
-                'service_l999ulg', // Remplace par ton vrai Service ID
-                'template_uond4ic', // Remplace par ton vrai Template ID
+                'service_l999ulg',
+                'template_uond4ic',
                 {
                     from_name: formData.name,
                     from_email: formData.email,
@@ -534,7 +507,6 @@ class WorldMapPortfolio {
                 }
             );
 
-            // Succès
             this.showFormSuccess();
             form.reset();
             inputs.forEach(input => {
@@ -542,10 +514,8 @@ class WorldMapPortfolio {
             });
 
         } catch (error) {
-            // Erreur
             this.showFormError(error);
         } finally {
-            // Restaurer le bouton
             submitBtn.disabled = false;
             btnText.style.display = 'inline';
             btnLoading.style.display = 'none';
@@ -553,7 +523,6 @@ class WorldMapPortfolio {
     }
 
     showFormSuccess() {
-        // Créer une notification de succès
         const notification = document.createElement('div');
         notification.className = 'form-notification success';
         notification.innerHTML = `
@@ -567,7 +536,6 @@ class WorldMapPortfolio {
     }
 
     showFormError(error) {
-        // Créer une notification d'erreur
         const notification = document.createElement('div');
         notification.className = 'form-notification error';
         notification.innerHTML = `
@@ -590,7 +558,6 @@ class WorldMapPortfolio {
             notification.style.transform = 'translateY(0)';
         }, 100);
 
-        // Supprimer la notification après 5 secondes
         setTimeout(() => {
             notification.style.opacity = '0';
             notification.style.transform = 'translateY(-20px)';
