@@ -1,8 +1,13 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# -----------------------------
+# OS files
+# -----------------------------
 # macOS
 .DS_Store
 .AppleDouble
 .LSOverride
-.Icon?
+Icon?
 ._*
 .Spotlight-V100
 .Trashes
@@ -12,39 +17,79 @@ Thumbs.db
 ehthumbs.db
 Desktop.ini
 
-# Node/Web tooling
+# -----------------------------
+# Dependencies / tooling
+# -----------------------------
+/node_modules
 node_modules/
 
-# Build outputs
-.dist/
-dist/
+# -----------------------------
+# Framework/build outputs
+# -----------------------------
+# Next.js
+/.next/
+/out/
+
+# General build dirs
+/build
 build/
+dist/
+.dist/
 out/
+
+# Caches
 .cache/
+.parcel-cache/
+.vite/
+.nuxt/
+.svelte-kit/
 .tmp/
 tmp/
 
+# Static site generators
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.hugo_build.lock
+.docusaurus/
+.vuepress/dist/
+.vitepress/dist/
+
+# -----------------------------
 # Logs and reports
+# -----------------------------
 logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.pnpm-debug.log*
 pnpm-debug.log*
 coverage/
+.eslintcache
 
+# -----------------------------
 # Env files
-.env
-.env.*
+# -----------------------------
+.env*
 !.env.example
 
-# Editors/IDEs
+# -----------------------------
+# Hosting / CI
+# -----------------------------
+.vercel
+.netlify
+
+# -----------------------------
+# Editors / IDEs
+# -----------------------------
 .vscode/
 .idea/
 *.swp
 *.swo
 
-# Static site generators
-_site/
-.sass-cache/
-.cache-loader/
+# -----------------------------
+# TypeScript
+# -----------------------------
+*.tsbuildinfo
+next-env.d.ts
